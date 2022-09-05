@@ -1,4 +1,4 @@
-package com.pandaserv.pandaserv;
+package com.pandaserv;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

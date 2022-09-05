@@ -1,11 +1,13 @@
 package com.pandaserv.telegrambot;
 
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 
+@Component
 public class Storage {
-
     private ArrayList<String> quoteList;
-    Storage()
+    public Storage()
     {
         quoteList = new ArrayList<>();
         quoteList.add("Начинать всегда стоит с того, что сеет сомнения. \n\nБорис Стругацкий.");

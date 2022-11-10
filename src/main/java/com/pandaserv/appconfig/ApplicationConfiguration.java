@@ -3,8 +3,10 @@ package com.pandaserv.appconfig;
 import com.pandaserv.telegrambot.Bot;
 import com.pandaserv.telegrambot.Storage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
@@ -17,7 +19,7 @@ public class ApplicationConfiguration {
     Bot bot;
 
     @PostConstruct
-    public void registerTelegramBot(){
+    public void registerTelegramBot() {
         try {
             TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
             telegramBotsApi.registerBot(bot);
@@ -27,7 +29,7 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public Storage storageBean(){
+    public Storage storageBean() {
         return new Storage();
     }
 
@@ -35,4 +37,6 @@ public class ApplicationConfiguration {
     public void setBot(Bot bot) {
         this.bot = bot;
     }
+
+
 }

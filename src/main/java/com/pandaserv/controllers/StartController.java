@@ -1,6 +1,6 @@
 package com.pandaserv.controllers;
 
-import com.pandaserv.model.Account;
+import com.pandaserv.entity.AccountEntity;
 import com.pandaserv.service.AccountServiceImpl;
 import com.pandaserv.telegrambot.Bot;
 import org.slf4j.Logger;
@@ -35,10 +35,10 @@ public class StartController {
 
     @CrossOrigin(origins = "http://192.168.100.11:8080")
     @GetMapping("/getValue")
-    public ResponseEntity<List<Account>> getValue() {
+    public ResponseEntity<List<AccountEntity>> getValue() {
         logger.info("getValue");
-        List<Account> accounts = accountService.readAll();
-        return new ResponseEntity<List<Account>>(accounts, HttpStatus.OK);
+        List<AccountEntity> accountEntities = accountService.readAll();
+        return new ResponseEntity<List<AccountEntity>>(accountEntities, HttpStatus.OK);
     }
 
 }

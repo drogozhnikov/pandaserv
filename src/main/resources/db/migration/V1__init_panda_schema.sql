@@ -1,10 +1,11 @@
 create schema if not exists panda;
-SET search_path TO panda;
 
-DROP TABLE IF EXISTS accounts;
+DROP TABLE IF EXISTS account;
 DROP TABLE IF EXISTS owners;
 DROP TABLE IF EXISTS mails;
 DROP TABLE IF EXISTS types;
+
+SET search_path TO panda;
 
 CREATE TABLE IF NOT EXISTS mails
 (
@@ -29,7 +30,7 @@ CREATE TABLE IF NOT EXISTS accounts
 (
     id       SERIAL PRIMARY KEY,
     name     CHAR(90)  NOT NULL,
-    account  CHAR(50),
+    account CHAR(50),
     password CHAR(30)  NOT NULL,
     link     text,
     description text,
@@ -38,3 +39,10 @@ CREATE TABLE IF NOT EXISTS accounts
     type    integer NOT NULL,
     date     timestamp NOT NULL
 );
+
+ALTER TABLE accounts
+    ADD FOREIGN KEY (mail) REFERENCES mails (id);
+ALTER TABLE accounts
+    ADD FOREIGN KEY (owner) REFERENCES owners (id);
+ALTER TABLE accounts
+    ADD FOREIGN KEY (type) REFERENCES types (id);

@@ -1,18 +1,18 @@
 package com.pandaserv.service;
 
-import com.pandaserv.model.Account;
+import com.pandaserv.entity.AccountEntity;
 
 import java.util.List;
 
 public interface AccountService {
 
-    void create(Account account);
+    void create(AccountEntity accountEntity);
 
-    List<Account> readAll();
+    List<AccountEntity> readAll();
 
-    Account read(int id);
+    AccountEntity read(int id);
 
-    boolean update(Account account, int id);
+    boolean update(AccountEntity accountEntity, int id);
 
     boolean delete(int id);
 

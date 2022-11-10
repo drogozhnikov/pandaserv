@@ -1,7 +1,7 @@
 package com.pandaserv.service;
 
-import com.pandaserv.model.Account;
-import com.pandaserv.repositories.AccountRepository;
+import com.pandaserv.entity.AccountEntity;
+import com.pandaserv.repository.AccountRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,25 +16,25 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void create(Account account) {
-        accountRepository.save(account);
+    public void create(AccountEntity accountEntity) {
+        accountRepository.save(accountEntity);
     }
 
     @Override
-    public List<Account> readAll() {
+    public List<AccountEntity> readAll() {
         return accountRepository.findAll();
     }
 
     @Override
-    public Account read(int id) {
+    public AccountEntity read(int id) {
         return accountRepository.findAccountById(id);
     }
 
     @Override
-    public boolean update(Account account, int id) {
+    public boolean update(AccountEntity accountEntity, int id) {
         if(accountRepository.existsById(id)){
-            account.setId(id);
-            accountRepository.save(account);
+            accountEntity.setId(id);
+            accountRepository.save(accountEntity);
             return true;
         }
         return false;

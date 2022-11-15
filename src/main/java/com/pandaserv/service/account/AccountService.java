@@ -1,4 +1,4 @@
-package com.pandaserv.service;
+package com.pandaserv.service.account;
 
 import com.pandaserv.entity.AccountEntity;
 

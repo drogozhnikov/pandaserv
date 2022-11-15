@@ -1,7 +1,7 @@
 package com.pandaserv.controllers;
 
 import com.pandaserv.entity.AccountEntity;
-import com.pandaserv.service.AccountServiceImpl;
+import com.pandaserv.service.account.AccountServiceImpl;
 import com.pandaserv.telegrambot.Bot;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,19 +9,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-public class StartController {
+@RequestMapping("/api/telegram")
+public class TelegramController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private Bot bot;
     private AccountServiceImpl accountService;
 
-    public StartController(Bot bot, AccountServiceImpl service) {
+    public TelegramController(Bot bot, AccountServiceImpl service) {
         this.bot = bot;
         this.accountService = service;
     }
@@ -38,7 +40,7 @@ public class StartController {
     public ResponseEntity<List<AccountEntity>> getValue() {
         logger.info("getValue");
         List<AccountEntity> accountEntities = accountService.readAll();
-        return new ResponseEntity<List<AccountEntity>>(accountEntities, HttpStatus.OK);
+        return new ResponseEntity<>(accountEntities, HttpStatus.OK);
     }
 
 }

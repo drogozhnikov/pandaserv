@@ -1,7 +1,9 @@
-package com.pandaserv.service;
+package com.pandaserv.service.account;
 
 import com.pandaserv.entity.AccountEntity;
 import com.pandaserv.repository.AccountRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,6 +12,8 @@ import java.util.List;
 public class AccountServiceImpl implements AccountService {
 
     private AccountRepository accountRepository;
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public AccountServiceImpl(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;

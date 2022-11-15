@@ -8,7 +8,11 @@ import java.util.List;
 public interface AccountRepository extends JpaRepository<AccountEntity, Integer> {
 
     List<AccountEntity> findAccountByName(String name);
+
     List<AccountEntity> findAll();
+
     AccountEntity findAccountById(int id);
+
+    void deleteAccountEntitiesBy(int id);
 
 }

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/mails")
 public class MailController {
 
     private MailServiceImpl mailService;
@@ -16,27 +16,27 @@ public class MailController {
         this.mailService = mailService;
     }
 
-    @GetMapping("/mails/all")
+    @GetMapping("/all")
     public List<MailEntity> getAllEvents() {
         return mailService.readAll();
     }
 
-    @GetMapping("/mails/{id}")
+    @GetMapping("/{id}")
     public MailEntity getAccountById(@PathVariable("id") int id) {
         return mailService.read(id);
     }
 
-    @PostMapping("/mails")
+    @PostMapping("/")
     public void createAccount(@RequestBody MailEntity mailEntity) {
         mailService.create(mailEntity);
     }
 
-    @PutMapping("/mails/")
+    @PutMapping("/")
     public void updateEvent(@RequestBody MailEntity mailEntity) {
         mailService.update(mailEntity, mailEntity.getId());
     }
 
-    @DeleteMapping("/mails/{id}")
+    @DeleteMapping("/{id}")
     public void deleteEvent(@PathVariable("id") int id) {
         mailService.delete(id);
     }

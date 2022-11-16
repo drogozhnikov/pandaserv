@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/types")
 public class TypeController {
 
     private TypeServiceImpl typeService;
@@ -16,27 +16,27 @@ public class TypeController {
         this.typeService = typeService;
     }
 
-    @GetMapping("/types/all")
+    @GetMapping("/all")
     public List<TypeEntity> getAllEvents() {
         return typeService.readAll();
     }
 
-    @GetMapping("/types/{id}")
+    @GetMapping("/{id}")
     public TypeEntity getAccountById(@PathVariable("id") int id) {
         return typeService.read(id);
     }
 
-    @PostMapping("/types")
+    @PostMapping("/")
     public void createAccount(@RequestBody TypeEntity typeEntity) {
         typeService.create(typeEntity);
     }
 
-    @PutMapping("/types/")
+    @PutMapping("/")
     public void updateEvent(@RequestBody TypeEntity typeEntity) {
         typeService.update(typeEntity, typeEntity.getId());
     }
 
-    @DeleteMapping("/types/{id}")
+    @DeleteMapping("/{id}")
     public void deleteEvent(@PathVariable("id") int id) {
         typeService.delete(id);
     }

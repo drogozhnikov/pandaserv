@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/accounts")
 public class AccountController {
 
     private AccountServiceImpl accountService;
@@ -16,27 +16,27 @@ public class AccountController {
         this.accountService = service;
     }
 
-    @GetMapping("/accounts/all")
+    @GetMapping("/all")
     public List<AccountEntity> getAllEvents() {
         return accountService.readAll();
     }
 
-    @GetMapping("/accounts/{id}")
+    @GetMapping("/{id}")
     public AccountEntity getAccountById(@PathVariable("id") int id) {
         return accountService.read(id);
     }
 
-    @PostMapping("/accounts")
+    @PostMapping("/")
     public void createAccount(@RequestBody AccountEntity account) {
         accountService.create(account);
     }
 
-    @PutMapping("/accounts/")
+    @PutMapping("/")
     public void updateEvent(@RequestBody AccountEntity account) {
         accountService.update(account, account.getId());
     }
 
-    @DeleteMapping("/accounts/{id}")
+    @DeleteMapping("/{id}")
     public void deleteEvent(@PathVariable("id") int id) {
         accountService.delete(id);
     }

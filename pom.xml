@@ -152,6 +152,13 @@
 			<version>1.6.12</version>
 		</dependency>
 
+		<dependency>
+			<groupId>io.github.wniemiec-util-java</groupId>
+			<artifactId>string-utils</artifactId>
+			<version>1.1.2</version>
+		</dependency>
+
+
 	</dependencies>
 
 </project>

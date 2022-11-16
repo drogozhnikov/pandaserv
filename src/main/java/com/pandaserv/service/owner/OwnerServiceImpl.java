@@ -2,6 +2,7 @@ package com.pandaserv.service.owner;
 
 import com.pandaserv.entity.OwnerEntity;
 import com.pandaserv.repository.OwnerRepository;
+import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -9,15 +10,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class OwnerServiceImpl implements OwnerService {
 
     private OwnerRepository ownerRepository;
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
-    public OwnerServiceImpl(OwnerRepository ownerRepository) {
-        this.ownerRepository = ownerRepository;
-    }
 
     @Override
     public void create(OwnerEntity ownerEntity) {

@@ -2,6 +2,7 @@ package com.pandaserv.service.type;
 
 import com.pandaserv.entity.TypeEntity;
 import com.pandaserv.repository.TypeRepository;
+import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -9,15 +10,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class TypeServiceImpl implements TypeService {
 
     private TypeRepository typeRepository;
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
-    public TypeServiceImpl(TypeRepository typeRepository) {
-        this.typeRepository = typeRepository;
-    }
 
     @Override
     public void create(TypeEntity ownerEntity) {

@@ -2,6 +2,7 @@ package com.pandaserv.service.mail;
 
 import com.pandaserv.entity.MailEntity;
 import com.pandaserv.repository.MailRepository;
+import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -9,15 +10,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class MailServiceImpl implements MailService {
 
     private MailRepository mailRepository;
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
-    public MailServiceImpl(MailRepository mailRepository) {
-        this.mailRepository = mailRepository;
-    }
 
     @Override
     public void create(MailEntity mailEntity) {

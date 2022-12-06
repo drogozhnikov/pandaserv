@@ -45,21 +45,6 @@ public class AccountEntity {
 
     private Date date;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        AccountEntity location = (AccountEntity) o;
-        return id == location.id;
-    }
 
-    @Override
-    public int hashCode() {
-        int result = id == null ? 0 : id.hashCode();
-        int passwordValue = password == null ? 0 : password.hashCode() * 31;
-        int nameValue = name == null ? 0 : name.hashCode() * 31;
-        result = 31 * result + passwordValue + nameValue;
-        return result;
-    }
 
 }

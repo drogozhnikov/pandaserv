@@ -4,6 +4,7 @@ import com.pandaserv.service.MessageService;
 import com.pandaserv.telegrambot.Bot;
 import com.pandaserv.telegrambot.Storage;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -44,6 +45,9 @@ public class ApplicationConfiguration {
     public void setBot(Bot bot) {
         this.bot = bot;
     }
+
+    @Bean
+    public ModelMapper getModelMapper(){ return new ModelMapper();}
 
 
 }

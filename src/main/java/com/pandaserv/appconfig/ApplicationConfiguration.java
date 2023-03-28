@@ -1,8 +1,6 @@
 package com.pandaserv.appconfig;
 
 import com.pandaserv.service.MessageService;
-import com.pandaserv.telegrambot.Bot;
-import com.pandaserv.telegrambot.Storage;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,31 +17,9 @@ import javax.annotation.PostConstruct;
 @Configuration
 public class ApplicationConfiguration {
 
-    Bot bot;
-
     @Bean
     public MessageService getMessageSerivice(MessageSource messageSource) {
         return new MessageService(messageSource);
-    }
-
-    @PostConstruct
-    public void registerTelegramBot() {
-        try {
-            TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
-            telegramBotsApi.registerBot(bot);
-        } catch (TelegramApiException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Bean
-    public Storage storageBean() {
-        return new Storage();
-    }
-
-    @Autowired
-    public void setBot(Bot bot) {
-        this.bot = bot;
     }
 
     @Bean

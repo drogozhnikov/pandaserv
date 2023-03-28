@@ -1,9 +1,6 @@
 package com.pandaserv.controllers;
 
-import com.pandaserv.dto.MailDto;
-import com.pandaserv.dto.OwnerDto;
 import com.pandaserv.dto.TypeDto;
-import com.pandaserv.entity.OwnerEntity;
 import com.pandaserv.entity.TypeEntity;
 import com.pandaserv.service.type.TypeServiceImpl;
 import org.modelmapper.ModelMapper;
@@ -13,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@CrossOrigin //needed to Vue
 @RequestMapping("/api/types")
 public class TypeController {
 

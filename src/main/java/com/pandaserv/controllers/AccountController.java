@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@CrossOrigin //needed to Vue
 @RequestMapping("/api/accounts")
 public class AccountController {
 
@@ -22,11 +23,13 @@ public class AccountController {
     }
 
     @GetMapping("/all")
-    public List<AccountDto> getAllEvents() {
+    public List<AccountDto> getAllAccounts() {
         List<AccountEntity> entitiesList = accountService.readAll();
-        return entitiesList.stream()
+        List<AccountDto> tempList = entitiesList.stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
+        System.out.println();
+        return tempList;
     }
 
     @GetMapping("/{id}")

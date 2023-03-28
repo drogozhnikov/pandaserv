@@ -2,6 +2,8 @@ package com.pandaserv.dto;
 
 import lombok.*;
 
+import java.security.acl.Owner;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -15,6 +17,10 @@ public class AccountDto {
     private String name;
 
     private String account;
+
+    private MailDto mail;
+
+    private OwnerDto owner;
 
     @NonNull
     private String password;

@@ -1,6 +1,5 @@
 package com.pandaserv.dto;
 
-import com.pandaserv.entity.OwnerEntity;
 import lombok.*;
 
 @NoArgsConstructor
@@ -13,7 +12,7 @@ public class OwnerDto {
     private Integer id;
 
     @NonNull
-    private String ownerName;
+    private String name;
 
     @Override
     public boolean equals(Object o) {
@@ -26,7 +25,7 @@ public class OwnerDto {
     @Override
     public int hashCode() {
         int result = id == null ? 0 : id.hashCode();
-        int nameValue = ownerName == null ? 0 : ownerName.hashCode() * 31;
+        int nameValue = name == null ? 0 : name.hashCode() * 31;
         result = 31 * result + nameValue;
         return result;
     }

@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@CrossOrigin //needed to Vue
 @RequestMapping("/api/owners")
 public class OwnerController {
 

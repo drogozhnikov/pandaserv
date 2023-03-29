@@ -1,8 +1,6 @@
 package com.pandaserv.controllers;
 
-import com.pandaserv.dto.AccountDto;
 import com.pandaserv.dto.MailDto;
-import com.pandaserv.entity.AccountEntity;
 import com.pandaserv.entity.MailEntity;
 import com.pandaserv.service.mail.MailServiceImpl;
 import org.modelmapper.ModelMapper;
@@ -25,7 +23,7 @@ public class MailController {
     }
 
     @GetMapping("/all")
-    public List<MailDto> getAllEvents() {
+    public List<MailDto> getAllMails() {
         List<MailEntity> entitiesList = mailService.readAll();
         return entitiesList.stream()
                 .map(this::convertToDto)
@@ -33,22 +31,17 @@ public class MailController {
     }
 
     @GetMapping("/{id}")
-    public MailDto getAccountById(@PathVariable("id") int id) {
+    public MailDto getMailById(@PathVariable("id") int id) {
         return convertToDto(mailService.read(id));
     }
 
     @PostMapping("/")
-    public void createAccount(@RequestBody MailDto mailDto) {
+    public void createMail(@RequestBody MailDto mailDto) {
         mailService.create(convertToEntity(mailDto));
     }
 
-    @PutMapping("/")
-    public void updateEvent(@RequestBody MailDto mailDto) {
-        mailService.update(convertToEntity(mailDto), mailDto.getId());
-    }
-
     @DeleteMapping("/{id}")
-    public void deleteEvent(@PathVariable("id") int id) {
+    public void deleteMail(@PathVariable("id") int id) {
         mailService.delete(id);
     }
 

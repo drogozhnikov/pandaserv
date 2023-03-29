@@ -1,5 +1,6 @@
 package com.pandaserv.entity;
 
+import com.pandaserv.model.Type;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -39,9 +40,8 @@ public class AccountEntity {
     @JoinColumn(name = "owner")
     private OwnerEntity owner;
 
-    @ManyToOne
-    @JoinColumn(name = "type")
-    private TypeEntity type;
+    @Enumerated(EnumType.STRING)
+    private Type type;
 
     private Date date;
 

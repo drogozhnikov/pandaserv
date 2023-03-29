@@ -21,4 +21,8 @@ public class OwnerEntity {
 
     private String ownerName;
 
+    public OwnerEntity(String name){
+        this.ownerName = name;
+    }
+
 }

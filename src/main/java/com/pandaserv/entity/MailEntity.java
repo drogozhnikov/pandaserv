@@ -21,4 +21,8 @@ public class MailEntity {
 
     private String mail;
 
+    public MailEntity(String mail) {
+        this.mail = mail;
+    }
+
 }

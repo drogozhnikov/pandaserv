@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface OwnerService {
 
-    void create(OwnerEntity ownerEntity);
+    OwnerEntity create(OwnerEntity ownerEntity);
 
     List<OwnerEntity> readAll();
 
     OwnerEntity read(int id);
 
-    boolean update(OwnerEntity ownerEntity, int id);
+    OwnerEntity findOwnerEntityByOwnerName(String name);
 
     boolean delete(int id);
 }

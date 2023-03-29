@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface MailService {
 
-    void create(MailEntity mailEntity);
+    MailEntity create(MailEntity mailEntity);
 
     List<MailEntity> readAll();
 
     MailEntity read(int id);
 
-    boolean update(MailEntity mailEntity, int id);
+    MailEntity findMailEntityByMail(String mail);
 
     boolean delete(int id);
 }

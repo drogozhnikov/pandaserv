@@ -1,13 +1,16 @@
 package com.pandaserv.service.mail;
 
 import com.pandaserv.entity.MailEntity;
+import com.pandaserv.exception.PandaException;
 import com.pandaserv.repository.MailRepository;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -18,8 +21,8 @@ public class MailServiceImpl implements MailService {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Override
-    public void create(MailEntity mailEntity) {
-        mailRepository.save(mailEntity);
+    public MailEntity create(MailEntity mailEntity) {
+        return mailRepository.save(mailEntity);
     }
 
     @Override
@@ -33,13 +36,16 @@ public class MailServiceImpl implements MailService {
     }
 
     @Override
-    public boolean update(MailEntity mailEntity, int id) {
-        if (mailRepository.existsById(id)) {
-            mailEntity.setId(id);
-            mailRepository.save(mailEntity);
-            return true;
+    public MailEntity findMailEntityByMail(String mail) {
+        Optional<String> isMail = Optional.ofNullable(mail);
+        if (isMail.isPresent()) {
+            Optional<MailEntity> isMailEntity = Optional.ofNullable(mailRepository.findMailEntitiesByMail(mail));
+            if (!isMailEntity.isPresent()) {
+                return mailRepository.save(new MailEntity(mail));
+            }
+            return isMailEntity.get();
         }
-        return false;
+        throw new PandaException("Please give mail", HttpStatus.BAD_REQUEST);
     }
 
     @Override

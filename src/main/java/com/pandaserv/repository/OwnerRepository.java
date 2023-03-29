@@ -9,7 +9,7 @@ public interface OwnerRepository extends JpaRepository<OwnerEntity, Integer> {
 
     OwnerEntity findOwnerEntitiesById(int id);
 
-    OwnerEntity findOwnerEntitiesByOwnerName(String ownerName);
+    OwnerEntity findOwnerEntityByOwnerName(String ownerName);
 
     List<OwnerEntity> findAll();
 

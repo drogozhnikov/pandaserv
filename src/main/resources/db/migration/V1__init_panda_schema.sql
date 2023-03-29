@@ -3,7 +3,6 @@ create schema if not exists panda;
 DROP TABLE IF EXISTS account;
 DROP TABLE IF EXISTS owners;
 DROP TABLE IF EXISTS mails;
-DROP TABLE IF EXISTS types;
 
 SET search_path TO panda;
 
@@ -19,11 +18,8 @@ CREATE TABLE IF NOT EXISTS owners
     owner_name VARCHAR(200) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS types
-(
-    id   SERIAL PRIMARY KEY,
-    type VARCHAR(200) NOT NULL
-);
+DROP TYPE IF EXISTS user_type;
+CREATE TYPE user_type AS ENUM ('SOCIALS', 'GAMES', 'WORK', 'TEMP', 'TRASH');
 
 
 CREATE TABLE IF NOT EXISTS accounts
@@ -36,7 +32,7 @@ CREATE TABLE IF NOT EXISTS accounts
     description text,
     mail        integer     NOT NULL,
     owner       integer     NOT NULL,
-    type        integer     NOT NULL,
+    type        user_type     NOT NULL DEFAULT 'TEMP',
     date        timestamp   NOT NULL
 );
 
@@ -44,5 +40,3 @@ ALTER TABLE accounts
     ADD FOREIGN KEY (mail) REFERENCES mails (id);
 ALTER TABLE accounts
     ADD FOREIGN KEY (owner) REFERENCES owners (id);
-ALTER TABLE accounts
-    ADD FOREIGN KEY (type) REFERENCES types (id);

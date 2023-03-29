@@ -25,7 +25,7 @@ public class OwnerController {
     }
 
     @GetMapping("/all")
-    public List<OwnerDto> getAllEvents() {
+    public List<OwnerDto> getAllOwners() {
         List<OwnerEntity> entitiesList = ownerService.readAll();
         return entitiesList.stream()
                 .map(this::convertToDto)
@@ -33,22 +33,17 @@ public class OwnerController {
     }
 
     @GetMapping("/{id}")
-    public OwnerDto getAccountById(@PathVariable("id") int id) {
+    public OwnerDto getOwnerById(@PathVariable("id") int id) {
         return convertToDto(ownerService.read(id));
     }
 
     @PostMapping("/")
-    public void createAccount(@RequestBody OwnerDto ownerDto) {
+    public void createOwner(@RequestBody OwnerDto ownerDto) {
         ownerService.create(convertToEntity(ownerDto));
     }
 
-    @PutMapping("/")
-    public void updateEvent(@RequestBody OwnerDto ownerDto) {
-        ownerService.update(convertToEntity(ownerDto), ownerDto.getId());
-    }
-
     @DeleteMapping("/{id}")
-    public void deleteEvent(@PathVariable("id") int id) {
+    public void deleteOwner(@PathVariable("id") int id) {
         ownerService.delete(id);
     }
 

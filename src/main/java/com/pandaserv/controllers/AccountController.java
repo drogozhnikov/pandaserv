@@ -24,41 +24,27 @@ public class AccountController {
 
     @GetMapping("/all")
     public List<AccountDto> getAllAccounts() {
-        List<AccountEntity> entitiesList = accountService.readAll();
-        List<AccountDto> tempList = entitiesList.stream()
-                .map(this::convertToDto)
-                .collect(Collectors.toList());
-        System.out.println();
-        return tempList;
+        return accountService.readAll();
     }
 
     @GetMapping("/{id}")
     public AccountDto getAccountById(@PathVariable("id") int id) {
-        return convertToDto(accountService.read(id));
+        return accountService.read(id);
     }
 
     @PostMapping("/")
     public void createAccount(@RequestBody AccountDto accountDto) {
-        accountService.create(convertToEntity(accountDto));
+        accountService.create(accountDto);
     }
 
     @PutMapping("/")
-    public void updateEvent(@RequestBody AccountDto accountDto) {
-        accountService.update(convertToEntity(accountDto), accountDto.getId());
+    public void updateAccount(@RequestBody AccountDto accountDto) {
+        accountService.update(accountDto);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteEvent(@PathVariable("id") int id) {
+    public void deleteAccount(@PathVariable("id") int id) {
         accountService.delete(id);
-    }
-
-
-    private AccountDto convertToDto(AccountEntity inputEntity) {
-        return modelMapper.map(inputEntity, AccountDto.class);
-    }
-
-    private AccountEntity convertToEntity(AccountDto inputDTO) {
-        return modelMapper.map(inputDTO, AccountEntity.class);
     }
 
 }

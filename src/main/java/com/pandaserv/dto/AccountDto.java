@@ -10,7 +10,8 @@ import java.security.acl.Owner;
 @Builder
 public class AccountDto {
 
-    @NonNull
+    private int id;
+
     private String name;
 
     private String account;
@@ -19,7 +20,6 @@ public class AccountDto {
 
     private String owner;
 
-    @NonNull
     private String password;
 
     private String link;

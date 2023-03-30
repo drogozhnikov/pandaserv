@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Date;
 
 @Data
 @NoArgsConstructor
@@ -32,6 +31,9 @@ public class AccountEntity {
 
     private String description;
 
+    @Enumerated(EnumType.STRING)
+    private Type type;
+
     @ManyToOne
     @JoinColumn(name = "mail")
     private MailEntity mail;
@@ -39,12 +41,5 @@ public class AccountEntity {
     @ManyToOne
     @JoinColumn(name = "owner")
     private OwnerEntity owner;
-
-    @Enumerated(EnumType.STRING)
-    private Type type;
-
-    private Date date;
-
-
 
 }

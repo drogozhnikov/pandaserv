@@ -18,10 +18,6 @@ CREATE TABLE IF NOT EXISTS owners
     owner_name VARCHAR(200) NOT NULL
 );
 
-DROP TYPE IF EXISTS user_type;
-CREATE TYPE user_type AS ENUM ('SOCIALS', 'GAMES', 'WORK', 'TEMP', 'TRASH');
-
-
 CREATE TABLE IF NOT EXISTS accounts
 (
     id          SERIAL PRIMARY KEY,
@@ -32,8 +28,7 @@ CREATE TABLE IF NOT EXISTS accounts
     description text,
     mail        integer     NOT NULL,
     owner       integer     NOT NULL,
-    type        user_type     NOT NULL DEFAULT 'TEMP',
-    date        timestamp   NOT NULL
+    type        VARCHAR(10) NOT NULL DEFAULT 'TEMP'
 );
 
 ALTER TABLE accounts

@@ -1,35 +1,25 @@
 package com.pandaserv.controllers;
 
 import com.pandaserv.dto.AccountDto;
-import com.pandaserv.entity.AccountEntity;
-import com.pandaserv.service.account.AccountServiceImpl;
-import org.modelmapper.ModelMapper;
+import com.pandaserv.service.AccountService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin //needed to Vue
 @RequestMapping("/api/accounts")
 public class AccountController {
 
-    private AccountServiceImpl accountService;
-    private ModelMapper modelMapper;
+    private AccountService accountService;
 
-    public AccountController(AccountServiceImpl service, ModelMapper modelMapper) {
+    public AccountController(AccountService service) {
         this.accountService = service;
-        this.modelMapper = modelMapper;
     }
 
     @GetMapping("/all")
-    public List<AccountDto> getAllAccounts() {
+    public List<AccountDto> getAccounts() {
         return accountService.readAll();
-    }
-
-    @GetMapping("/{id}")
-    public AccountDto getAccountById(@PathVariable("id") int id) {
-        return accountService.read(id);
     }
 
     @PostMapping("/")
@@ -42,9 +32,9 @@ public class AccountController {
         accountService.update(accountDto);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteAccount(@PathVariable("id") int id) {
-        accountService.delete(id);
+    @DeleteMapping("/")
+    public void deleteAccount(@RequestBody AccountDto accountDto) {
+        accountService.delete(accountDto);
     }
 
 }

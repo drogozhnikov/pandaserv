@@ -8,7 +8,6 @@ import lombok.*;
 @Builder
 public class OwnerDto {
 
-    @NonNull
     private String name;
 
 }

@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin //needed to Vue
-@RequestMapping("/api/data")
+@RequestMapping("/api/panda/data")
 public class DataController {
 
     private final MailService mailService;

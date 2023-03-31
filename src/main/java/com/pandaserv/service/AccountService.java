@@ -38,11 +38,9 @@ public class AccountService {
         }
     }
 
-    public void delete(AccountDto accountDto) {
-        if (Optional.ofNullable(accountDto).isPresent()) {
-            Optional<AccountEntity> entity = accountRepository.findAccountByName(accountDto.getName());
-            entity.ifPresent(mailEntity -> accountRepository.delete(mailEntity));
-        }
+    public void delete(int id) {
+        Optional<AccountEntity> entity = accountRepository.findAccountById(id);
+        entity.ifPresent(mailEntity -> accountRepository.delete(mailEntity));
     }
 
 

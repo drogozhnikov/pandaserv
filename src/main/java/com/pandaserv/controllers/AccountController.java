@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin //needed to Vue
-@RequestMapping("/api/accounts")
+@RequestMapping("/api/panda/accounts")
 public class AccountController {
 
     private AccountService accountService;
@@ -32,9 +32,9 @@ public class AccountController {
         accountService.update(accountDto);
     }
 
-    @DeleteMapping("/")
-    public void deleteAccount(@RequestBody AccountDto accountDto) {
-        accountService.delete(accountDto);
+    @DeleteMapping("/{id}")
+    public void deleteAccount(@PathVariable("id") int id) {
+        accountService.delete(id);
     }
 
 }

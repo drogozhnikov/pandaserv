@@ -48,7 +48,7 @@ public class AccountConverter {
                 .description(inputDTO.getDescription())
                 .mail(mailService.findOrSaveAndGetMail(inputDTO.getMail()))
                 .owner(ownerService.findOwnerEntityByOwnerName(inputDTO.getOwner()))
-                .type(Type.SOCIALS)
+                .type(Type.valueOf(inputDTO.getType()))
                 .build();
     }
 

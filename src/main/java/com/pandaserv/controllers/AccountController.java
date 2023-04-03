@@ -23,8 +23,8 @@ public class AccountController {
     }
 
     @PostMapping("/")
-    public void createAccount(@RequestBody AccountDto accountDto) {
-        accountService.create(accountDto);
+    public int createAccount(@RequestBody AccountDto accountDto) {
+        return accountService.create(accountDto);
     }
 
     @PutMapping("/")

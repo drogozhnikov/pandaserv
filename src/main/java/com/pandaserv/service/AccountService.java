@@ -21,8 +21,9 @@ public class AccountService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public void create(AccountDto accountDto) {
-        accountRepository.save(accountConverter.convertToEntity(accountDto));
+    public int create(AccountDto accountDto) {
+        AccountEntity account = accountRepository.save(accountConverter.convertToEntity(accountDto));
+        return account.getId();
     }
 
     public List<AccountDto> readAll() {

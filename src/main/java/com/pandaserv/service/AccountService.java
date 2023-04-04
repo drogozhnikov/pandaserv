@@ -23,9 +23,8 @@ public class AccountService {
     private AccountRepository accountRepository;
     private AccountConverter accountConverter;
 
-    public int create(AccountDto accountDto) {
-        AccountEntity account = accountRepository.save(accountConverter.convertToEntity(accountDto));
-        return account.getId();
+    public void create(AccountDto accountDto) {
+        accountRepository.save(accountConverter.convertToEntity(accountDto));
     }
 
     public List<AccountDto> readAll() {
@@ -33,7 +32,7 @@ public class AccountService {
     }
 
     public void update(AccountDto accountDto) {
-        Optional<AccountEntity> entity = accountRepository.findAccountById(accountDto.getId());
+        Optional<AccountEntity> entity = accountRepository.findAccountByName(accountDto.getName());
         if (entity.isPresent()) {
             AccountEntity updatedEntity = accountConverter.convertToEntity(accountDto);
             updatedEntity.setId(entity.get().getId());
@@ -41,10 +40,9 @@ public class AccountService {
         }
     }
 
-    public void delete(int id) {
-        Optional<AccountEntity> entity = accountRepository.findAccountById(id);
+    public void delete(String name) {
+        Optional<AccountEntity> entity = accountRepository.findAccountByName(name);
         entity.ifPresent(mailEntity -> accountRepository.delete(mailEntity));
     }
-
 
 }

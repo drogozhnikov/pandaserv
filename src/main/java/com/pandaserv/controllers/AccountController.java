@@ -23,8 +23,8 @@ public class AccountController {
     }
 
     @PostMapping("/")
-    public int createAccount(@RequestBody AccountDto accountDto) {
-        return accountService.create(accountDto);
+    public void createAccount(@RequestBody AccountDto accountDto) {
+        accountService.create(accountDto);
     }
 
     @PutMapping("/")
@@ -32,9 +32,9 @@ public class AccountController {
         accountService.update(accountDto);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteAccount(@PathVariable("id") int id) {
-        accountService.delete(id);
+    @DeleteMapping("/{name}")
+    public void deleteAccount(@PathVariable("name") String name) {
+        accountService.delete(name);
     }
 
 }

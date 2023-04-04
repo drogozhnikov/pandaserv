@@ -2,11 +2,15 @@ package com.pandaserv.service;
 
 import com.pandaserv.dto.AccountDto;
 import com.pandaserv.entity.AccountEntity;
+import com.pandaserv.exception.PandaException;
 import com.pandaserv.repository.AccountRepository;
 import com.pandaserv.service.converter.AccountConverter;
 import lombok.AllArgsConstructor;
+import org.postgresql.util.PSQLException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataAccessException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,8 +22,6 @@ public class AccountService {
 
     private AccountRepository accountRepository;
     private AccountConverter accountConverter;
-
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public int create(AccountDto accountDto) {
         AccountEntity account = accountRepository.save(accountConverter.convertToEntity(accountDto));

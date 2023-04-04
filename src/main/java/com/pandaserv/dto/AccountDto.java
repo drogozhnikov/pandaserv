@@ -12,6 +12,7 @@ public class AccountDto {
 
     private int id;
 
+    @NonNull
     private String name;
 
     private String account;
@@ -20,6 +21,7 @@ public class AccountDto {
 
     private String owner;
 
+    @NonNull
     private String password;
 
     private String link;

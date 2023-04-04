@@ -9,6 +9,7 @@ import lombok.*;
 @Builder
 public class MailDto {
 
+    @NonNull
     private String mail;
 
 }

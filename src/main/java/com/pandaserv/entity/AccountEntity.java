@@ -1,10 +1,7 @@
 package com.pandaserv.entity;
 
 import com.pandaserv.model.Type;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -21,10 +18,12 @@ public class AccountEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NonNull
     private String name;
 
     private String account;
 
+    @NonNull
     private String password;
 
     private String link;

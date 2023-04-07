@@ -13,6 +13,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,6 +44,13 @@ public class AccountService {
     public void delete(String name) {
         Optional<AccountEntity> entity = accountRepository.findAccountByName(name);
         entity.ifPresent(mailEntity -> accountRepository.delete(mailEntity));
+    }
+
+    public void deleteSelected(List<String> names) {
+        for(String name: names){
+            Optional<AccountEntity> entity = accountRepository.findAccountByName(name);
+            entity.ifPresent(mailEntity -> accountRepository.delete(mailEntity));
+        }
     }
 
 }

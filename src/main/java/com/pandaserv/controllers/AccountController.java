@@ -37,9 +37,4 @@ public class AccountController {
         accountService.delete(name);
     }
 
-    @DeleteMapping("/")
-    public void deleteAccountTest(@RequestBody List<String> names) {
-        accountService.deleteSelected(names);
-    }
-
 }

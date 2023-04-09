@@ -3,10 +3,10 @@ package com.pandaserv.controllers;
 import com.pandaserv.dto.MailDto;
 import com.pandaserv.dto.OwnerDto;
 import com.pandaserv.model.Type;
+import com.pandaserv.service.AccountService;
+import com.pandaserv.service.DataService;
 import com.pandaserv.service.MailService;
 import com.pandaserv.service.OwnerService;
-import com.pandaserv.service.PasswordService;
-import com.pandaserv.utils.PasswordGenerator;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +25,8 @@ public class DataController {
 
     private MailService mailService;
     private OwnerService ownerService;
-    private PasswordService passwordService;
+    private DataService dataService;
+    private AccountService accountService;
 
     @GetMapping("/mails")
     public List<MailDto> getMails() {
@@ -44,7 +45,12 @@ public class DataController {
 
     @GetMapping("/passgen")
     public String generatePassword() {
-        return passwordService.generatePassword();
+        return dataService.generatePassword();
+    }
+
+    @GetMapping("/loadJson")
+    public void loadJson(){
+        accountService.createMultiple(dataService.readJson());
     }
 
 }

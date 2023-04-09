@@ -1,0 +1,250 @@
+[
+  {
+    "id": 0,
+    "name": "Geralt",
+    "account": "Geralt",
+    "mail": "Geralt.@.com",
+    "owner": "Ditar",
+    "password": "Smwdhgdytl00021",
+    "link": "Geralt",
+    "type": "GAMES",
+    "description": "Geralt"
+  },
+  {
+    "id": 1,
+    "name": "Geralt4",
+    "account": "Dmain",
+    "mail": "Dmain.@.com",
+    "owner": "Ditar",
+    "password": "Pjmimbcvly00020",
+    "link": "Dmain",
+    "type": "GAMES",
+    "description": "Dmain"
+  },
+  {
+    "id": 2,
+    "name": "DSeccond@",
+    "account": "DSeccond@",
+    "mail": "DSeccond@.@.com",
+    "owner": "Ditar",
+    "password": "Tvokpwvcfd00019",
+    "link": "DSeccond@",
+    "type": "TRASH",
+    "description": ""
+  },
+  {
+    "id": 3,
+    "name": "Testa",
+    "account": "Testa",
+    "mail": "Testa.@.com",
+    "owner": "Ditar",
+    "password": "Hglwatczle00018",
+    "link": "Testa",
+    "type": "GAMES",
+    "description": ""
+  }
+,
+  {
+    "id": 4,
+    "name": "JOJO",
+    "account": "JOJO",
+    "mail": "JOJO.@.com",
+    "owner": "Ditar",
+    "password": "Hglwatczle00017",
+    "link": "JOJO",
+    "type": "GAMES",
+    "description": "JOJO"
+  }
+,
+  {
+    "id": 5,
+    "name": "JOJOBinx",
+    "account": "JOJOBinx",
+    "mail": "JOJOBinx.@.com",
+    "owner": "Ditar",
+    "password": "Hglwatczle00016",
+    "link": "JOJOBinx",
+    "type": "GAMES",
+    "description": "JOJOBinx"
+  }
+,
+  {
+    "id": 6,
+    "name": "Baracuda",
+    "account": "Baracuda",
+    "mail": "Baracuda.@.com",
+    "owner": "Ditar",
+    "password": "Hglwatczle00015",
+    "link": "Baracuda",
+    "type": "GAMES",
+    "description": "Baracuda"
+  }
+,
+  {
+    "id": 7,
+    "name": "Barmalei",
+    "account": "Barmalei",
+    "mail": "Barmalei.@.com",
+    "owner": "Ditar",
+    "password": "Hglwatczle00014",
+    "link": "Barmalei",
+    "type": "GAMES",
+    "description": "Barmalei"
+  }
+,
+  {
+    "id": 8,
+    "name": "Asoka",
+    "account": "Asoka",
+    "mail": "Asoka.@.com",
+    "owner": "Ditar",
+    "password": "Hglwatczle00013",
+    "link": "Asoka",
+    "type": "GAMES",
+    "description": "Asoka"
+  }
+,
+  {
+    "id": 9,
+    "name": "Piedro",
+    "account": "Piedro",
+    "mail": "Piedro.@.com",
+    "owner": "Ditar",
+    "password": "Hglwatczle00012",
+    "link": "Piedro",
+    "type": "GAMES",
+    "description": "Piedro"
+  }
+,
+  {
+    "id": 10,
+    "name": "Tauren",
+    "account": "Tauren",
+    "mail": "Tauren.@.com",
+    "owner": "Ditar",
+    "password": "Hglwatczle00011",
+    "link": "Tauren",
+    "type": "GAMES",
+    "description": "Tauren"
+  }
+,
+  {
+    "id": 11,
+    "name": "Poncho",
+    "account": "Poncho",
+    "mail": "Poncho.@.com",
+    "owner": "Ditar",
+    "password": "Hglwatczle00010",
+    "link": "Poncho",
+    "type": "GAMES",
+    "description": "Poncho"
+  }
+,
+  {
+    "id": 12,
+    "name": "Plotva",
+    "account": "Plotva",
+    "mail": "Plotva.@.com",
+    "owner": "Ditar",
+    "password": "Hglwatczle00009",
+    "link": "Plotva",
+    "type": "GAMES",
+    "description": "Plotva"
+  }
+,
+  {
+    "id": 13,
+    "name": "Raivo",
+    "account": "Raivo",
+    "mail": "Raivo.@.com",
+    "owner": "Ditar",
+    "password": "Hglwatczle00008",
+    "link": "Raivo",
+    "type": "GAMES",
+    "description": "Raivo"
+  }
+,
+  {
+    "id": 14,
+    "name": "Raven",
+    "account": "Raven",
+    "mail": "Raven.@.com",
+    "owner": "Ditar",
+    "password": "Hglwatczle00007",
+    "link": "Raven",
+    "type": "GAMES",
+    "description": "Raven"
+  }
+,
+  {
+    "id": 15,
+    "name": "Revan",
+    "account": "Revan",
+    "mail": "Revan.@.com",
+    "owner": "Ditar",
+    "password": "Hglwatczle00006",
+    "link": "Revan",
+    "type": "GAMES",
+    "description": "Revan"
+  }
+,
+  {
+    "id": 16,
+    "name": "Vedar",
+    "account": "Vedar",
+    "mail": "Vedar.@.com",
+    "owner": "Ditar",
+    "password": "Hglwatczle00005",
+    "link": "Vedar",
+    "type": "GAMES",
+    "description": "Vedar"
+  }
+,
+  {
+    "id": 17,
+    "name": "Postal",
+    "account": "Postal",
+    "mail": "Postal.@.com",
+    "owner": "Ditar",
+    "password": "Hglwatczle00004",
+    "link": "Postal",
+    "type": "GAMES",
+    "description": "Postal"
+  }
+,
+  {
+    "id": 18,
+    "name": "V",
+    "account": "V",
+    "mail": "V.@.com",
+    "owner": "Ditar",
+    "password": "Hglwatczle00003",
+    "link": "V",
+    "type": "GAMES",
+    "description": "V"
+  }
+,
+  {
+    "id": 19,
+    "name": "Bitrix",
+    "account": "Bitrix",
+    "mail": "Bitrix.@.com",
+    "owner": "Ditar",
+    "password": "Hglwatczle00002",
+    "link": "Bitrix",
+    "type": "GAMES",
+    "description": "Bitrix"
+  }
+,
+  {
+    "id": 20,
+    "name": "ComPadre",
+    "account": "ComPadre",
+    "mail": "ComPadre.@.com",
+    "owner": "Ditar",
+    "password": "Hglwatczle00001",
+    "link": "ComPadre",
+    "type": "GAMES",
+    "description": "ComPadre"
+  }
+]

@@ -2,10 +2,12 @@ package com.pandaserv.service;
 
 import com.pandaserv.dto.AccountDto;
 import com.pandaserv.entity.AccountEntity;
+import com.pandaserv.exception.PandaException;
 import com.pandaserv.repository.AccountRepository;
 import com.pandaserv.service.converter.AccountConverter;
 import com.pandaserv.utils.JsonIO;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,27 +21,38 @@ public class AccountService {
     private AccountConverter accountConverter;
 
 
-    public void create(AccountDto accountDto) {
-        accountRepository.save(accountConverter.convertToEntity(accountDto));
+    public AccountDto create(AccountDto accountDto) {
+        AccountEntity entity =  accountRepository.save(accountConverter.convertToEntity(accountDto));
+        return accountConverter.convertToDto(entity);
     }
 
-    public void createMultiple(List<AccountDto> accountDtos){
-        for(AccountDto dto: accountDtos){
+    public void createMultiple(List<AccountDto> accountDtos) {
+        for (AccountDto dto : accountDtos) {
             accountRepository.save(accountConverter.convertToEntity(dto));
         }
+    }
+
+    public AccountDto findAccountByName(String name) {
+        Optional<AccountEntity> entity = accountRepository.findAccountByName(name);
+        if (entity.isPresent()) {
+           return  accountConverter.convertToDto(entity.get());
+        }
+        throw new PandaException("NotFound",HttpStatus.NOT_FOUND);
     }
 
     public List<AccountDto> readAll() {
         return accountConverter.convertAllToDto(accountRepository.findAll());
     }
 
-    public void update(AccountDto accountDto) {
+    public AccountDto update(AccountDto accountDto) {
         Optional<AccountEntity> entity = accountRepository.findAccountByName(accountDto.getOldName());
         if (entity.isPresent()) {
             AccountEntity updatedEntity = accountConverter.convertToEntity(accountDto);
             updatedEntity.setId(entity.get().getId());
-            accountRepository.save(updatedEntity);
+            updatedEntity = accountRepository.save(updatedEntity);
+            return accountConverter.convertToDto(updatedEntity);
         }
+        throw new PandaException("Update error", HttpStatus.BAD_REQUEST);
     }
 
     public void delete(String name) {

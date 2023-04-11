@@ -5,6 +5,7 @@ import com.pandaserv.service.AccountService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin //needed to Vue
@@ -22,14 +23,19 @@ public class AccountController {
         return accountService.readAll();
     }
 
+    @GetMapping("/pwd")
+    public String getPassword(@RequestParam String name) {
+        return accountService.findAccountByName(name).getPassword();
+    }
+
     @PostMapping("/")
-    public void createAccount(@RequestBody AccountDto accountDto) {
-        accountService.create(accountDto);
+    public AccountDto createAccount(@RequestBody AccountDto accountDto) {
+        return accountService.create(accountDto);
     }
 
     @PutMapping("/")
-    public void updateAccount(@RequestBody AccountDto accountDto) {
-        accountService.update(accountDto);
+    public AccountDto updateAccount(@RequestBody AccountDto accountDto) {
+        return accountService.update(accountDto);
     }
 
     @DeleteMapping("/{name}")

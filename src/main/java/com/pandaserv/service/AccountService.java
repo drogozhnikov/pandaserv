@@ -32,20 +32,12 @@ public class AccountService {
         }
     }
 
-    public AccountDto findAccountByName(String name) {
-        Optional<AccountEntity> entity = accountRepository.findAccountByName(name);
-        if (entity.isPresent()) {
-           return  accountConverter.convertToDto(entity.get());
-        }
-        throw new PandaException("NotFound",HttpStatus.NOT_FOUND);
-    }
-
     public List<AccountDto> readAll() {
         return accountConverter.convertAllToDto(accountRepository.findAll());
     }
 
     public AccountDto update(AccountDto accountDto) {
-        Optional<AccountEntity> entity = accountRepository.findAccountByName(accountDto.getOldName());
+        Optional<AccountEntity> entity = accountRepository.findAccountById(accountDto.getId());
         if (entity.isPresent()) {
             AccountEntity updatedEntity = accountConverter.convertToEntity(accountDto);
             updatedEntity.setId(entity.get().getId());
@@ -55,8 +47,8 @@ public class AccountService {
         throw new PandaException("Update error", HttpStatus.BAD_REQUEST);
     }
 
-    public void delete(String name) {
-        Optional<AccountEntity> entity = accountRepository.findAccountByName(name);
+    public void delete(int id ) {
+        Optional<AccountEntity> entity = accountRepository.findAccountById(id);
         entity.ifPresent(mailEntity -> accountRepository.delete(mailEntity));
     }
 

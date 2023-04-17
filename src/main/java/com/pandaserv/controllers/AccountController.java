@@ -23,11 +23,6 @@ public class AccountController {
         return accountService.readAll();
     }
 
-    @GetMapping("/pwd")
-    public String getPassword(@RequestParam String name) {
-        return accountService.findAccountByName(name).getPassword();
-    }
-
     @PostMapping("/")
     public AccountDto createAccount(@RequestBody AccountDto accountDto) {
         return accountService.create(accountDto);
@@ -38,9 +33,9 @@ public class AccountController {
         return accountService.update(accountDto);
     }
 
-    @DeleteMapping("/{name}")
-    public void deleteAccount(@PathVariable("name") String name) {
-        accountService.delete(name);
+    @DeleteMapping("/{id}")
+    public void deleteAccount(@PathVariable("id") int id) {
+        accountService.delete(id);
     }
 
 }

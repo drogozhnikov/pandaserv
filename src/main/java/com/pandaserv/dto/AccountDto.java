@@ -15,8 +15,6 @@ public class AccountDto {
     @NonNull
     private String name;
 
-    private String oldName;
-
     private String account;
 
     private String mail;

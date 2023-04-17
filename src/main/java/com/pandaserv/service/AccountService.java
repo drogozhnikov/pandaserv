@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,7 +34,11 @@ public class AccountService {
     }
 
     public List<AccountDto> readAll() {
-        return accountConverter.convertAllToDto(accountRepository.findAll());
+        List<AccountEntity> entityList = accountRepository.findAll();
+        if(!entityList.isEmpty()){
+            return accountConverter.convertAllToDto(entityList);
+        }
+        return new ArrayList<>();
     }
 
     public AccountDto update(AccountDto accountDto) {

@@ -50,8 +50,8 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-<!--		<jjwt.version>0.9.1</jjwt.version>-->
-<!--		<spring-security.version>5.3.3.RELEASE</spring-security.version>-->
+		<jjwt.version>0.9.1</jjwt.version>
+		<spring-security.version>5.3.3.RELEASE</spring-security.version>
 	</properties>
 	<dependencies>
 
@@ -166,15 +166,15 @@
 		</dependency>
 
 		<!-- Micro -->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.cloud</groupId>-->
-<!--			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>-->
-<!--			<version>3.1.5</version>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-actuator</artifactId>-->
-<!--		</dependency>-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<version>3.1.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 
 	</dependencies>
 

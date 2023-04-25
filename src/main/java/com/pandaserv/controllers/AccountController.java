@@ -5,10 +5,9 @@ import com.pandaserv.service.AccountService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
-@CrossOrigin //needed to Vue
+//@CrossOrigin //needed to Vue
 @RequestMapping("/api/panda/accounts")
 public class AccountController {
 

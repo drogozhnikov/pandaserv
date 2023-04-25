@@ -8,7 +8,6 @@ import com.pandaserv.service.DataService;
 import com.pandaserv.service.MailService;
 import com.pandaserv.service.OwnerService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@CrossOrigin //needed to Vue
+//@CrossOrigin //needed to Vue
 @RequestMapping("/api/panda/data")
 @AllArgsConstructor
 public class DataController {
@@ -49,7 +48,7 @@ public class DataController {
     }
 
     @GetMapping("/loadJson")
-    public void loadJson(){
+    public void loadJson() {
         accountService.createMultiple(dataService.readJson());
     }
 

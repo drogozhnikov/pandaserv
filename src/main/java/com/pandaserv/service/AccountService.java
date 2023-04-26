@@ -2,6 +2,7 @@ package com.pandaserv.service;
 
 import com.pandaserv.dto.AccountDto;
 import com.pandaserv.entity.AccountEntity;
+import com.pandaserv.entity.OwnerEntity;
 import com.pandaserv.exception.PandaException;
 import com.pandaserv.repository.AccountRepository;
 import com.pandaserv.service.converter.AccountConverter;
@@ -20,7 +21,7 @@ public class AccountService {
 
     private AccountRepository accountRepository;
     private AccountConverter accountConverter;
-
+    private OwnerService ownerService;
 
     public AccountDto create(AccountDto accountDto) {
         AccountEntity entity =  accountRepository.save(accountConverter.convertToEntity(accountDto));
@@ -33,8 +34,9 @@ public class AccountService {
         }
     }
 
-    public List<AccountDto> readAll() {
-        List<AccountEntity> entityList = accountRepository.findAll();
+    public List<AccountDto> readAll(String owner) {
+        OwnerEntity ownerEntity = ownerService.findOwnerEntityByOwnerName(owner);
+        List<AccountEntity> entityList = accountRepository.findAllByOwnerEquals(ownerEntity);
         if(!entityList.isEmpty()){
             return accountConverter.convertAllToDto(entityList);
         }

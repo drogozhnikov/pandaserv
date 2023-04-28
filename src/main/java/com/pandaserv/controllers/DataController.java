@@ -1,5 +1,7 @@
 package com.pandaserv.controllers;
 
+import com.ctc.wstx.io.BufferRecycler;
+import com.pandaserv.dto.AccountDto;
 import com.pandaserv.dto.MailDto;
 import com.pandaserv.dto.OwnerDto;
 import com.pandaserv.model.Type;
@@ -8,12 +10,16 @@ import com.pandaserv.service.DataService;
 import com.pandaserv.service.MailService;
 import com.pandaserv.service.OwnerService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.nio.Buffer;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 @RestController
@@ -47,9 +53,8 @@ public class DataController {
         return dataService.generatePassword();
     }
 
-    @GetMapping("/loadJson")
-    public void loadJson() {
-        accountService.createMultiple(dataService.readJson());
+    @PostMapping("/loadJson")
+    public void loadJson2(@RequestPart MultipartFile file) {
+        accountService.createMultiple(dataService.readJson(file));
     }
-
 }

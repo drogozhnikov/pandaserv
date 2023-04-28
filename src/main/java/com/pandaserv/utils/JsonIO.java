@@ -8,8 +8,11 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 @Component
@@ -28,6 +31,34 @@ public class JsonIO {
             System.out.println("Smth Wrong");
         }
         return dtoList;
+    }
+
+    public List<AccountDto> jsonToEntity(MultipartFile inputFile) {
+        List<AccountDto> dtoList = null;
+        try {
+            File file = convertMultiPartToFile(inputFile);
+            if(file!=null){
+                ObjectMapper mapper = new ObjectMapper();
+                mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+                dtoList = mapper.readValue(file, new TypeReference<List<AccountDto>>() {
+                });
+            }
+
+        } catch (Exception e) {
+            System.out.println("Smth Wrong");
+        }
+        return dtoList;
+    }
+
+    private File convertMultiPartToFile(MultipartFile file ) throws IOException {
+        if(file.getOriginalFilename()!=null){
+            File convFile = new File( file.getOriginalFilename());
+            FileOutputStream fos = new FileOutputStream( convFile );
+            fos.write( file.getBytes() );
+            fos.close();
+            return convFile;
+        }
+        return null;
     }
 
 }

@@ -34,6 +34,19 @@ public class AccountService {
         }
     }
 
+    public void loadJson(String username, List<AccountDto> accountDtos){
+        for (AccountDto dto : accountDtos) {
+            accountRepository.save(accountConverter.convertToEntity(dto));
+        }
+    }
+
+    public void loadAndReplaceJson(String username, List<AccountDto> accountDtos){
+//        accountRepository.deleteAll(); //TODO Check Check Check
+        for (AccountDto dto : accountDtos) {
+            accountRepository.save(accountConverter.convertToEntity(dto));
+        }
+    }
+
     public List<AccountDto> readAll(String owner) {
         OwnerEntity ownerEntity = ownerService.findOwnerEntityByOwnerName(owner);
         List<AccountEntity> entityList = accountRepository.findAllByOwnerEquals(ownerEntity);

@@ -1,0 +1,24 @@
+[
+  {
+    "id": 0,
+    "name": "ReplaceMe",
+    "account": "ReplaceMe",
+    "mail": "ReplaceMe.@.com",
+    "owner": "ReplaceMe",
+    "password": "ReplaceMe",
+    "link": "ReplaceMe",
+    "type": "TRASH",
+    "description": "ReplaceMe"
+  },
+  {
+    "id": 1,
+    "name": "ReplaceMe",
+    "account": "ReplaceMe",
+    "mail": "ReplaceMe.@.com",
+    "owner": "ReplaceMe",
+    "password": "ReplaceMe",
+    "link": "ReplaceMe",
+    "type": "TRASH",
+    "description": "ReplaceMe"
+  }
+]

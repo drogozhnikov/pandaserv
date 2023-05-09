@@ -4,12 +4,14 @@ import com.ctc.wstx.io.BufferRecycler;
 import com.pandaserv.dto.AccountDto;
 import com.pandaserv.dto.MailDto;
 import com.pandaserv.dto.OwnerDto;
+import com.pandaserv.exception.PandaException;
 import com.pandaserv.model.Type;
 import com.pandaserv.service.AccountService;
 import com.pandaserv.service.DataService;
 import com.pandaserv.service.MailService;
 import com.pandaserv.service.OwnerService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -54,7 +56,13 @@ public class DataController {
     }
 
     @PostMapping("/loadJson")
-    public void loadJson2(@RequestPart MultipartFile file) {
+    public void loadJson(@RequestParam String username, @RequestPart MultipartFile file) {
         accountService.createMultiple(dataService.readJson(file));
     }
+
+    @PostMapping("/loadAndReplaceJson")
+    public void loadAndReplaceJson(@RequestParam String username, @RequestPart MultipartFile file) {
+        accountService.loadAndReplaceJson(username,dataService.readJson(file));
+    }
+
 }

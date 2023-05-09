@@ -57,7 +57,7 @@ public class DataController {
 
     @PostMapping("/loadJson")
     public void loadJson(@RequestParam String username, @RequestPart MultipartFile file) {
-        accountService.createMultiple(dataService.readJson(file));
+        accountService.loadJson(username, dataService.readJson(file));
     }
 
     @PostMapping("/loadAndReplaceJson")

@@ -6,7 +6,6 @@ import com.pandaserv.entity.OwnerEntity;
 import com.pandaserv.exception.PandaException;
 import com.pandaserv.repository.AccountRepository;
 import com.pandaserv.service.converter.AccountConverter;
-import com.pandaserv.utils.JsonIO;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -24,24 +23,18 @@ public class AccountService {
     private OwnerService ownerService;
 
     public AccountDto create(AccountDto accountDto) {
-        AccountEntity entity =  accountRepository.save(accountConverter.convertToEntity(accountDto));
+        AccountEntity entity = accountRepository.save(accountConverter.convertToEntity(accountDto));
         return accountConverter.convertToDto(entity);
     }
 
-    public void createMultiple(List<AccountDto> accountDtos) {
+    public void loadJson(String username, List<AccountDto> accountDtos) {
         for (AccountDto dto : accountDtos) {
             accountRepository.save(accountConverter.convertToEntity(dto));
         }
     }
 
-    public void loadJson(String username, List<AccountDto> accountDtos){
-        for (AccountDto dto : accountDtos) {
-            accountRepository.save(accountConverter.convertToEntity(dto));
-        }
-    }
-
-    public void loadAndReplaceJson(String username, List<AccountDto> accountDtos){
-//        accountRepository.deleteAll(); //TODO Check Check Check
+    public void loadAndReplaceJson(String username, List<AccountDto> accountDtos) {
+//        deleteAll(userName); //Check accountDtos username equals userName
         for (AccountDto dto : accountDtos) {
             accountRepository.save(accountConverter.convertToEntity(dto));
         }
@@ -50,7 +43,7 @@ public class AccountService {
     public List<AccountDto> readAll(String owner) {
         OwnerEntity ownerEntity = ownerService.findOwnerEntityByOwnerName(owner);
         List<AccountEntity> entityList = accountRepository.findAllByOwnerEquals(ownerEntity);
-        if(!entityList.isEmpty()){
+        if (!entityList.isEmpty()) {
             return accountConverter.convertAllToDto(entityList);
         }
         return new ArrayList<>();
@@ -67,9 +60,17 @@ public class AccountService {
         throw new PandaException("Update error", HttpStatus.BAD_REQUEST);
     }
 
-    public void delete(int id ) {
+    public void delete(int id) {
         Optional<AccountEntity> entity = accountRepository.findAccountById(id);
         entity.ifPresent(mailEntity -> accountRepository.delete(mailEntity));
+    }
+
+    public void deleteAll(String username){
+        OwnerEntity owner = ownerService.findOwnerEntityByOwnerName(username);
+        List<AccountEntity> ownerList = accountRepository.findAllByOwnerEquals(owner);
+            if(ownerList.size()>0){
+                accountRepository.deleteAll(ownerList);
+            }
     }
 
 }

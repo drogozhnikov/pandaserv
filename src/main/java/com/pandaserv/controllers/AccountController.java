@@ -41,4 +41,9 @@ public class AccountController {
         accountService.delete(id);
     }
 
+    @DeleteMapping("/")
+    public void deleteAccount(@RequestHeader(value = "user") String userName) {
+        accountService.deleteAll(userName);
+    }
+
 }

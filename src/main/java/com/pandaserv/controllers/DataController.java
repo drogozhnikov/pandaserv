@@ -1,27 +1,26 @@
 package com.pandaserv.controllers;
 
-import com.ctc.wstx.io.BufferRecycler;
-import com.pandaserv.dto.AccountDto;
 import com.pandaserv.dto.MailDto;
 import com.pandaserv.dto.OwnerDto;
-import com.pandaserv.exception.PandaException;
 import com.pandaserv.model.Type;
 import com.pandaserv.service.AccountService;
 import com.pandaserv.service.DataService;
 import com.pandaserv.service.MailService;
 import com.pandaserv.service.OwnerService;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.Buffer;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
 @RestController
@@ -62,7 +61,26 @@ public class DataController {
 
     @PostMapping("/loadAndReplaceJson")
     public void loadAndReplaceJson(@RequestParam String username, @RequestPart MultipartFile file) {
-        accountService.loadAndReplaceJson(username,dataService.readJson(file));
+        accountService.loadAndReplaceJson(username, dataService.readJson(file));
+    }
+
+    @GetMapping("/template")
+    public ResponseEntity<Object> downloadTemplate() throws IOException {
+        File file = dataService.getTemplateFile();
+        InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
+
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.add("Content-Disposition", String.format("attachment; filename=\"%s\"", file.getName()));
+        headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
+        headers.add("Pragma", "no-cache");
+        headers.add("Expires", "0");
+
+        ResponseEntity<Object>
+                responseEntity = ResponseEntity.ok().headers(headers).contentLength(file.length()).contentType(
+                MediaType.parseMediaType("application/txt")).body(resource);
+
+        return responseEntity;
     }
 
 }

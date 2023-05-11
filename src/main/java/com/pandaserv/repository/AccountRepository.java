@@ -12,7 +12,7 @@ public interface AccountRepository extends JpaRepository<AccountEntity, Integer>
     Optional<AccountEntity> findAccountByName(String name);
     Optional<AccountEntity> findAccountById(Integer id);
 
-    void removeAccountEntitiesByOwner(OwnerEntity owner);
+    List<AccountEntity> findAccountEntitiesByOwner(OwnerEntity owner);
 
     List<AccountEntity> findAll();
 

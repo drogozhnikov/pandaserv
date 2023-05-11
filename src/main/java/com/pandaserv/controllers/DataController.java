@@ -17,7 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -56,12 +55,12 @@ public class DataController {
 
     @PostMapping("/loadJson")
     public void loadJson(@RequestParam String username, @RequestPart MultipartFile file) {
-        accountService.loadJson(username, dataService.readJson(file));
+        accountService.loadJson(username, dataService.readJson(username, file));
     }
 
     @PostMapping("/loadAndReplaceJson")
     public void loadAndReplaceJson(@RequestParam String username, @RequestPart MultipartFile file) {
-        accountService.loadAndReplaceJson(username, dataService.readJson(file));
+        accountService.replaceAll(username, dataService.readJson(username, file));
     }
 
     @GetMapping("/template")

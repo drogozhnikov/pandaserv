@@ -33,8 +33,8 @@ public class AccountService {
         }
     }
 
-    public void loadAndReplaceJson(String username, List<AccountDto> accountDtos) {
-//        deleteAll(userName); //Check accountDtos username equals userName
+    public void replaceAll(String username, List<AccountDto> accountDtos) {
+        deleteAll(username);
         for (AccountDto dto : accountDtos) {
             accountRepository.save(accountConverter.convertToEntity(dto));
         }

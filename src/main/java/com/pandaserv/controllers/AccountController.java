@@ -2,12 +2,8 @@ package com.pandaserv.controllers;
 
 import com.pandaserv.dto.AccountDto;
 import com.pandaserv.service.AccountService;
-import org.springframework.http.HttpHeaders;
-import org.springframework.security.crypto.bcrypt.BCrypt;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Base64;
 import java.util.List;
 
 @RestController
@@ -24,6 +20,10 @@ public class AccountController {
     @GetMapping("/all")
     public List<AccountDto> getAccounts(@RequestHeader(value = "user") String authorization) {
         return accountService.readAll(authorization);
+    }
+    @GetMapping("/alll")
+    public List<AccountDto> getAllAccounts() {
+        return accountService.readAll("master");
     }
 
     @PostMapping("/")

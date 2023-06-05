@@ -21,10 +21,6 @@ public class AccountController {
     public List<AccountDto> getAccounts(@RequestHeader(value = "user") String authorization) {
         return accountService.readAll(authorization);
     }
-    @GetMapping("/alll")
-    public List<AccountDto> getAllAccounts() {
-        return accountService.readAll("master");
-    }
 
     @PostMapping("/")
     public AccountDto createAccount(@RequestBody AccountDto accountDto) {
